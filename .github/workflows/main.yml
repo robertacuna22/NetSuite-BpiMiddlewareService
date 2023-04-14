@@ -9,6 +9,7 @@ on:
 env:
   AZURE_FUNCTION_NAME: NetsuiteBPIIntegration20230414203211
   AZURE_FUNCTION_PACKAGE_PATH: "./publish"
+  message: ${{ values.MESSAGE }}
 
 jobs:
   publish:
