@@ -20,7 +20,7 @@ namespace Netsuite.Services
 
         public async Task GetPaymentMessage()
         {
-            await Task.Run(() => Console.WriteLine(_appSettings.Message));
+            await Task.Run(() => Console.WriteLine($"Message: {_appSettings.Message}"));
         }
     }
 }
