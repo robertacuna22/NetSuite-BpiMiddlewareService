@@ -18,7 +18,7 @@ namespace Netsuite.BPIIntegration
         [FunctionName("NetSuiteMiddlewareFunction")]
         public void Run([BlobTrigger("rootcontainer/{name}")]Stream inputBlob, string name, ILogger log)
         {
-            _orderPaymentSyncService.GetPaymentMessage();
+            _orderPaymentSyncService.GetPaymentMessage(log);
 
             using (var streamReader = new StreamReader(inputBlob))
             {

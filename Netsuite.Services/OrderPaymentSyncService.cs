@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Netsuite.Core;
 using Netsuite.Services.IContract;
 using System;
@@ -18,9 +19,9 @@ namespace Netsuite.Services
             _appSettings = settings.Value;
         }
 
-        public async Task GetPaymentMessage()
+        public async Task GetPaymentMessage(ILogger log)
         {
-            await Task.Run(() => Console.WriteLine($"Message: {_appSettings.Message}"));
+            await Task.Run(() => log.LogInformation($"Message: {_appSettings.Message}"));
         }
     }
 }

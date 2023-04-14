@@ -32,8 +32,6 @@ namespace Netsuite.BPIIntegration
 
             builder.Services.AddTransient<IOrderPaymentSyncService, OrderPaymentSyncService>();
 
-            var serviceProvider = builder.Services.BuildServiceProvider();
-            serviceProvider.GetService<IOrderPaymentSyncService>().GetPaymentMessage();
         }
     }
 }
