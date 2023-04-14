@@ -6,7 +6,6 @@ namespace NetSuite.Testing
     {
         static void Main(string[] args)
         {
-            var function = new NetSuiteMiddlewareFunction();
 
 
         }

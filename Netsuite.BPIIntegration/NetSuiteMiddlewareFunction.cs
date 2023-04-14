@@ -2,16 +2,24 @@ using System;
 using System.IO;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
+using Netsuite.Services.IContract;
 
 namespace Netsuite.BPIIntegration
 {
     [StorageAccount("BlobConnectionString")]
     public class NetSuiteMiddlewareFunction
     {
+        private readonly IOrderPaymentSyncService _orderPaymentSyncService;
+        public NetSuiteMiddlewareFunction(IOrderPaymentSyncService orderPaymentSyncService)
+        {
+            _orderPaymentSyncService = orderPaymentSyncService;
+        }
 
         [FunctionName("NetSuiteMiddlewareFunction")]
         public void Run([BlobTrigger("rootcontainer/{name}")]Stream inputBlob, string name, ILogger log)
         {
+            _orderPaymentSyncService.GetPaymentMessage();
+
             using (var streamReader = new StreamReader(inputBlob))
             {
                 while (!streamReader.EndOfStream)

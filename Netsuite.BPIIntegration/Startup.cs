@@ -1,6 +1,10 @@
 ﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Netsuite.Core;
+using Netsuite.Core.Extensions;
+using Netsuite.Services;
+using Netsuite.Services.IContract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +17,23 @@ namespace Netsuite.BPIIntegration
     public class Startup : FunctionsStartup
     {
         private IConfigurationRoot configuration;
-        private string _connectionString = "";
 
         public override void Configure(IFunctionsHostBuilder builder)
         {
             var configuratioBuilder = new ConfigurationBuilder()
-                .AddJsonFile("local.settings.json", true);
+                .AddJsonFile("local.settings.json", true)
+                .AddDotNetDotEnvVariables(optional: true) //<-- Read a .env file and load it as a config eg Netsuite__ConnectionString=<connectionString>
+                .AddDotNetEnvironmentVariables("Values__");
 
-            var serviceProvider = builder.Services.BuildServiceProvider();
             configuration = configuratioBuilder.Build();
 
-            _connectionString = configuration.GetValue<string>("Values:BlobConnectionString");
-
             builder.Services.AddOptions();
+            builder.Services.Configure<AppSettings>(configuration.GetSection("Values"));
+
+            builder.Services.AddTransient<IOrderPaymentSyncService, OrderPaymentSyncService>();
+
+            var serviceProvider = builder.Services.BuildServiceProvider();
+            serviceProvider.GetService<IOrderPaymentSyncService>().GetPaymentMessage();
         }
     }
 }
