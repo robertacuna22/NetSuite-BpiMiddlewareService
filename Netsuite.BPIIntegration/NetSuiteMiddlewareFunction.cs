@@ -21,6 +21,7 @@ namespace Netsuite.BPIIntegration
                 }
             }
 
+            log.LogInformation("Practice makes perfect");
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {inputBlob.Length} Bytes");
         }
     }
