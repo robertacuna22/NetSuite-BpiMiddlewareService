@@ -9,6 +9,9 @@ namespace Netsuite.Services.IContract
 {
     public interface IOrderPaymentSyncService
     {
-        Task GetPaymentMessage(ILogger log);
+        Task GetPaymentMessage();
+
+        void SyncPaymentEncryptedInfoToBPI(Stream inputBlob, string blobName, ILogger log);
+        void SyncPaymentDecryptedInfoToBPI(Stream inputBlob, string blobName, ILogger log);
     }
 }

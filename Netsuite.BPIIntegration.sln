@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netsuite.BPIIntegration", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetSuite.Testing", "NetSuite.Testing\NetSuite.Testing.csproj", "{A77B1580-0146-4A05-ADA1-5878F17AE8B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netsuite.Core", "Netsuite.Core\Netsuite.Core.csproj", "{52B8FA3C-9FD3-4F6B-BD6C-FEBC8F50B69E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netsuite.Core", "Netsuite.Core\Netsuite.Core.csproj", "{52B8FA3C-9FD3-4F6B-BD6C-FEBC8F50B69E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netsuite.Services", "Netsuite.Services\Netsuite.Services.csproj", "{F00E8F11-DF6A-42DA-B3E4-C76667C6095A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netsuite.Services", "Netsuite.Services\Netsuite.Services.csproj", "{F00E8F11-DF6A-42DA-B3E4-C76667C6095A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetSuiteTriggerFunction.BPIIntegration", "NetSuiteTriggerFunction.BPIIntegration\NetSuiteTriggerFunction.BPIIntegration.csproj", "{EE72F582-B287-4772-AD88-20C9D08E50E9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F00E8F11-DF6A-42DA-B3E4-C76667C6095A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F00E8F11-DF6A-42DA-B3E4-C76667C6095A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F00E8F11-DF6A-42DA-B3E4-C76667C6095A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE72F582-B287-4772-AD88-20C9D08E50E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE72F582-B287-4772-AD88-20C9D08E50E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE72F582-B287-4772-AD88-20C9D08E50E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE72F582-B287-4772-AD88-20C9D08E50E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

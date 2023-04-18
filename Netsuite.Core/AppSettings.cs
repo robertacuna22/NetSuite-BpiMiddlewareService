@@ -2,8 +2,12 @@
 {
     public class AppSettings
     {
-        public string ConnectionString { get; set; }
-        public string ConnectionStringContent { get; set; }
         public string Message { get; set; }
+        public string StorageConnectionString { get; set; }
+        public string PGPSecKeyBlobFileName { get; set; }
+        public string PGPPubKeyBlobFileName { get; set; }
+        public string StorageContainerName { get; set; }
+        public string PGPPassPhrase { get; set; }
+        
     }
 }

@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Netsuite.BPIIntegration\Netsuite.BPIIntegration.csproj" />
+    <ProjectReference Include="..\Netsuite.Services\Netsuite.Services.csproj" />
   </ItemGroup>
 
 </Project>
