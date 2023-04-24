@@ -29,8 +29,8 @@ namespace Netsuite.BPIIntegration
         public void Run([BlobTrigger("rootcontainer/{name}")] Stream inputBlob, string name, ILogger log)
         {
 
-            _orderPaymentSyncService.SyncPaymentDecryptedInfoToBPI(inputBlob, name, log);
-            //_orderPaymentSyncService.SyncPaymentEncryptedInfoToBPI(inputBlob, name, log);
+            log.LogInformation($"Start the process to encrypt info file and send to BPI file portal.");
+            _orderPaymentSyncService.SyncPaymentEncryptedInfoToBPI(name, log);
 
             log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {inputBlob.Length} Bytes");
         }

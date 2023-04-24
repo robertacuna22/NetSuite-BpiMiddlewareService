@@ -2,14 +2,9 @@
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Netsuite.Core;
-using Netsuite.Services.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Netsuite.Services.IContract;
 
-namespace Netsuite.Services.IContract
+namespace Netsuite.Services
 {
     public class AzureStorage : IAzureStorage
     {
@@ -21,7 +16,7 @@ namespace Netsuite.Services.IContract
 
         public CloudStorageAccount StorageAccount
         {
-            get {  return CloudStorageAccount.Parse(_appSettings.StorageConnectionString); }             
+            get { return CloudStorageAccount.Parse(_appSettings.StorageConnectionString); }
         }
 
         public CloudBlobClient BlobClient

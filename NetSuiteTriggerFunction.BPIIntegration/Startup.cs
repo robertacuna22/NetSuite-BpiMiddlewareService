@@ -5,11 +5,6 @@ using Netsuite.Core;
 using Netsuite.Core.Extensions;
 using Netsuite.Services;
 using Netsuite.Services.IContract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 [assembly: FunctionsStartup(typeof(NetSuiteTriggerFunction.BPIIntegration.Startup))]
 namespace NetSuiteTriggerFunction.BPIIntegration
@@ -30,7 +25,9 @@ namespace NetSuiteTriggerFunction.BPIIntegration
             builder.Services.AddOptions();
             builder.Services.Configure<AppSettings>(configuration.GetSection("Values"));
 
-            builder.Services.AddTransient<IOrderPaymentSyncService, OrderPaymentSyncService>();
+            builder.Services.AddTransient<IOrderPaymentSyncService, OrderPaymentSyncService>()
+                .AddTransient<IAzureStorage, AzureStorage>()
+                .AddTransient<ISFTPSendingFileSyncService, SFTPSendingFileSyncService>();
 
         }
     }

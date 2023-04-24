@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Cryptography.X509Certificates;
 
 namespace Netsuite.Services
 {
     public static class IOHelper
     {
         private static string _TempAppDirectoryName;
-        public static string TempRootFile { get; set; } = @"C:\TempBlobDownload";
+        public static string TempRootFile { get; set; } = Path.GetTempPath();
         public static string TempAppDirectoryName
         {
             get
@@ -18,7 +13,7 @@ namespace Netsuite.Services
                 if (String.IsNullOrWhiteSpace(_TempAppDirectoryName))
                 {
                     var ts = DateTime.UtcNow.Ticks.ToString();
-                    _TempAppDirectoryName = Path.Combine(Path.GetTempPath(), TempRootFile, ts);
+                    _TempAppDirectoryName = Path.Combine(TempRootFile, ts);
                 }
                 return _TempAppDirectoryName;
             }
@@ -27,6 +22,19 @@ namespace Netsuite.Services
         public static string BuildTempFileName(string fileName)
         {
             return Path.Combine(TempAppDirectoryName, fileName);
+        }
+
+        public static void BuildTempFileKey(string filePath, string key)
+        {
+
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                using (StreamWriter streamOnTempFile = new StreamWriter(fileStream))
+                {
+                    streamOnTempFile.WriteLine(key.Trim());
+                }
+            }
+
         }
     }
 }

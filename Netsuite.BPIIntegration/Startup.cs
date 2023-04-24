@@ -4,7 +4,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Netsuite.Core;
 using Netsuite.Core.Extensions;
 using Netsuite.Services;
-using Netsuite.Services.Entity;
 using Netsuite.Services.IContract;
 using System;
 using System.Collections.Generic;
@@ -32,7 +31,8 @@ namespace Netsuite.BPIIntegration
             builder.Services.Configure<AppSettings>(configuration.GetSection("Values"));
 
             builder.Services.AddTransient<IOrderPaymentSyncService, OrderPaymentSyncService>()
-                .AddTransient<IAzureStorage, AzureStorage>();
+                .AddTransient<IAzureStorage, AzureStorage>()
+                .AddTransient<ISFTPSendingFileSyncService, SFTPSendingFileSyncService>();
 
         }
     }

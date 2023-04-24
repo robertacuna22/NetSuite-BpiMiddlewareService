@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Netsuite.Core\Netsuite.Core.csproj" />
     <ProjectReference Include="..\Netsuite.Services\Netsuite.Services.csproj" />
   </ItemGroup>
 
